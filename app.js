@@ -30,7 +30,7 @@ require("./userDetails");
 require("./imageDetails");
 
 app.get("/",(req,res)=>{
-  res.send("Welocme => Pls find the reset-password link  given in node terminal and copy this link on browser and get your forgot password reset ")
+  res.send("<h1>Note=> Pls if you forgot password , run post api (/forgot-password) in postman  then find the reset-password link  given in node terminal and copy this link on browser and get your forgot password reset ")
 })
 const User = mongoose.model("UserInfo");
 const Images = mongoose.model("ImageDetails");
