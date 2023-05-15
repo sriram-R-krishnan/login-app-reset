@@ -33,7 +33,7 @@ const User = mongoose.model("UserInfo");
 const Images = mongoose.model("ImageDetails");
 
 app.get("/",(req,res)=>{
-  res.send("Pls note if you forget your password then use api -/forgot-password in postman and you get reset password Link url in the Node Terminal which you will copy in any browser you will be able to reset your login password")
+  res.send("<h3>Pls note if you forget your password then use api -/forgot-password in postman and you get reset password Link url in the Node Terminal which you will copy in any browser you will be able to reset your password  <br> NOTE- Secret Key-AdarshT to log in as Admin</h3>")
 })
 app.post("/register", async (req, res) => {
   const { fname, lname, email, password, userType } = req.body;
