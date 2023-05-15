@@ -7,31 +7,28 @@ app.use(cors());
 const bcrypt = require("bcryptjs");
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
-const PORT=5000
+
 const jwt = require("jsonwebtoken");
-const nodemailer = require("nodemailer");
+var nodemailer = require("nodemailer");
 
 const JWT_SECRET =
   "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe";
 
 const mongoUrl =
-  "mongodb+srv://helpjs19:1234@cluster0.saaqqhb.mongodb.net/?retryWrites=true&w=majority ";
-  
+  "mongodb+srv://helpjs19:123@cluster0.bglvb0c.mongodb.net/?retryWrites=true&w=majority";
+
 mongoose
   .connect(mongoUrl, {
     useNewUrlParser: true,
   })
   .then(() => {
-    console.log("Connected to database mongoatlas");
+    console.log("Connected to database");
   })
   .catch((e) => console.log(e));
 
 require("./userDetails");
 require("./imageDetails");
 
-app.get("/",(req,res)=>{
-  res.send("<h1>Note=> Pls if you forgot password , run post api (/forgot-password) in postman  then find the reset-password link  given in node terminal and copy this link on browser and get your forgot password reset</h1> ")
-})
 const User = mongoose.model("UserInfo");
 const Images = mongoose.model("ImageDetails");
 app.post("/register", async (req, res) => {
@@ -75,7 +72,7 @@ app.post("/login-user", async (req, res) => {
       return res.json({ error: "error" });
     }
   }
-  res.json({ status: "error", error: "Invalid Password" });
+  res.json({ status: "error", error: "InvAlid Password" });
 });
 
 app.post("/userData", async (req, res) => {
@@ -104,7 +101,7 @@ app.post("/userData", async (req, res) => {
 });
 
 app.listen(5000, () => {
-  console.log(`Server Started on port ${PORT}`);
+  console.log("Server Started");
 });
 
 app.post("/forgot-password", async (req, res) => {
@@ -123,13 +120,13 @@ app.post("/forgot-password", async (req, res) => {
       service: "gmail",
       auth: {
         user: "helpjs19@gmail.com",
-        pass: "Jsarkar19",
+        pass: "rmdklolcsmswvyfw",
       },
     });
 
     var mailOptions = {
       from: "youremail@gmail.com",
-      to: "jaideep.sarkar19@rediffmail.com",
+      to: "helpjs19@gmail.com",
       subject: "Password Reset",
       text: link,
     };
