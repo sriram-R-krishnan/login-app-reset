@@ -31,6 +31,10 @@ require("./imageDetails");
 
 const User = mongoose.model("UserInfo");
 const Images = mongoose.model("ImageDetails");
+
+app.get("/",(req,res)=>{
+  res.send("Pls note if you forget your password then use api -/forgot-password in postman and you get reset password Link url in the Node Terminal which you will copy in any browser you will be able to reset your login password")
+})
 app.post("/register", async (req, res) => {
   const { fname, lname, email, password, userType } = req.body;
 
@@ -115,7 +119,7 @@ app.post("/forgot-password", async (req, res) => {
     const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, {
       expiresIn: "5m",
     });
-    const link = `http://localhost:5000/reset-password/${oldUser._id}/${token}`;
+    const link = `https://forgot-pwd-loginapp.onrender.com/reset-password/${oldUser._id}/${token}`;
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
